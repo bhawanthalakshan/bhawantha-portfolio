@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Bhawantha Lakshan Portfolio</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Admin Styles -->
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+
+  <!-- Background Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- ══════════════ LOGIN SCREEN ══════════════ -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h1 class="login-title">Admin Access</h1>
+      <p class="login-sub">Bhawantha Lakshan — Portfolio Manager</p>
+
+      <form id="login-form">
+        <div class="login-field">
+          <i class="fa-solid fa-envelope"></i>
+          <input
+            type="email"
+            id="login-email"
+            placeholder="Admin email address"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="login-field">
+          <i class="fa-solid fa-lock"></i>
+          <input
+            type="password"
+            id="login-password"
+            placeholder="Password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <button type="submit" class="login-btn">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Login</span>
+        </button>
+      </form>
+
+      <div class="login-error" id="login-error">
+        <i class="fa-solid fa-circle-xmark"></i>
+        <span>Incorrect email or password. Please try again.</span>
+      </div>
+
+      <p style="margin-top:20px; font-size:0.78rem; color:var(--text-muted);">
+        <a href="index.html" style="color:var(--blue-light); text-decoration:none;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════ DASHBOARD ══════════════ -->
+  <div id="dashboard">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-logo"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="topbar-brand">Mr.Bawa <span>Admin</span></div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-badge">● Live</div>
+        <a href="index.html" target="_blank" class="topbar-view-btn">
+          <i class="fa-solid fa-eye"></i> View Portfolio
+        </a>
+        <button class="logout-btn" id="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-layer-group"></i></div>
+          <div>
+            <div class="stat-num" id="stat-total">0</div>
+            <div class="stat-label">Total Works</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-palette"></i></div>
+          <div>
+            <div class="stat-num" id="stat-design">0</div>
+            <div class="stat-label">Design</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-code"></i></div>
+          <div>
+            <div class="stat-num" id="stat-web">0</div>
+            <div class="stat-label">Web Dev</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-brands fa-instagram"></i></div>
+          <div>
+            <div class="stat-num" id="stat-social">0</div>
+            <div class="stat-label">Social / Video</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Items Section -->
+      <div class="page-heading">
+        <h1>Portfolio <span>Works</span></h1>
+        <button class="btn btn-primary" id="add-item-btn">
+          <i class="fa-solid fa-plus"></i> Add New Work
+        </button>
+      </div>
+
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-title">
+            <i class="fa-solid fa-grid-2"></i>
+            All Portfolio Items
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted);">
+            ☁️ Synced to Supabase cloud
+          </span>
+        </div>
+        <div class="items-list" id="items-list">
+          <!-- Rendered by admin.js -->
+        </div>
+      </div>
+
+      <!-- Help Card -->
+      <div class="section-card" style="margin-top:16px;">
+        <div class="section-card-header">
+          <div class="section-card-title">
+            <i class="fa-solid fa-circle-info"></i>
+            How It Works
+          </div>
+        </div>
+        <div style="padding:20px 24px; color:var(--text-secondary); font-size:0.88rem; line-height:1.8;">
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li><i class="fa-solid fa-check" style="color:var(--green); margin-right:8px;"></i> <strong style="color:var(--text-primary);">Add:</strong> Click "Add New Work" — fill in details. Paste an image URL or upload from your computer.</li>
+            <li><i class="fa-solid fa-check" style="color:var(--green); margin-right:8px;"></i> <strong style="color:var(--text-primary);">Edit:</strong> Click Edit on any item to update it. Changes save to Supabase cloud instantly.</li>
+            <li><i class="fa-solid fa-check" style="color:var(--green); margin-right:8px;"></i> <strong style="color:var(--text-primary);">Delete:</strong> Click the trash icon to permanently remove an item from the database.</li>
+            <li><i class="fa-solid fa-check" style="color:var(--green); margin-right:8px;"></i> <strong style="color:var(--text-primary);">Published toggle:</strong> Uncheck "Published" to hide a work from visitors without deleting it.</li>
+            <li><i class="fa-solid fa-cloud" style="color:var(--blue); margin-right:8px;"></i> Data is stored in <strong style="color:var(--text-primary);">Supabase cloud</strong> — visible on all devices and browsers worldwide.</li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ══════════════ ADD/EDIT MODAL ══════════════ -->
+  <div class="modal-overlay" id="item-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Add New Work</h2>
+        <button class="modal-close" id="modal-close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="item-form">
+        <!-- Title & Category -->
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="item-title">Title <span>*</span></label>
+            <input type="text" class="field-input" id="item-title" placeholder="e.g. Brand Identity Poster" required />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="item-category">Category <span>*</span></label>
+            <select class="field-select" id="item-category" required>
+              <option value="design">🎨 Graphic Design</option>
+              <option value="web">💻 Web Development</option>
+              <option value="social">📱 Social Media</option>
+              <option value="video">🎬 Video Editing</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="field-group">
+          <label class="field-label" for="item-description">Description</label>
+          <textarea class="field-textarea" id="item-description" placeholder="Short description of this project..." rows="3"></textarea>
+        </div>
+
+        <!-- Image URL -->
+        <div class="field-group">
+          <label class="field-label" for="item-image-url">Image</label>
+          <input type="text" class="field-input" id="item-image-url" placeholder="https://... or upload below" />
+          <label class="file-upload-label" for="file-input">
+            <i class="fa-solid fa-upload"></i> Upload Image
+          </label>
+          <input type="file" id="file-input" accept="image/*" />
+
+          <!-- Preview -->
+          <div class="image-preview-wrap" id="image-preview-wrap">
+            <div class="image-preview-placeholder">
+              <i class="fa-solid fa-image"></i>
+              Image preview will appear here
+            </div>
+            <img src="" alt="Preview" id="preview-img" />
+          </div>
+        </div>
+
+        <!-- Link (optional) -->
+        <div class="field-group">
+          <label class="field-label" for="item-link">Project Link <small style="font-weight:400;color:var(--text-muted);">(optional)</small></label>
+          <input type="url" class="field-input" id="item-link" placeholder="https://yourproject.com" />
+        </div>
+
+        <!-- Sort Order + Published row -->
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="item-sort-order">Sort Order</label>
+            <input type="number" class="field-input" id="item-sort-order" value="0" min="0" placeholder="0" />
+          </div>
+          <div class="field-group" style="display:flex;align-items:center;gap:12px;padding-top:28px;">
+            <input type="checkbox" id="item-published" checked style="width:18px;height:18px;cursor:pointer;accent-color:var(--blue);" />
+            <label for="item-published" class="field-label" style="margin-bottom:0;cursor:pointer;">Published <small style="font-weight:400;color:var(--text-muted);">(visible to visitors)</small></label>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modal-save-btn">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Save to Cloud
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════ CONFIRM DELETE ══════════════ -->
+  <div class="confirm-overlay" id="confirm-overlay">
+    <div class="confirm-box">
+      <div class="confirm-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 class="confirm-title">Delete This Item?</h3>
+      <p class="confirm-text">This action cannot be undone. The item will be removed from your portfolio.</p>
+      <div class="confirm-actions">
+        <button class="btn btn-secondary" id="confirm-cancel-btn">Cancel</button>
+        <button class="btn btn-danger" id="confirm-delete-btn">
+          <i class="fa-solid fa-trash"></i> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ TOAST CONTAINER ══════════════ -->
+  <div id="toast-container"></div>
+
+  <!-- Supabase JS SDK (CDN — no build step needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Supabase config (URL + anon key) -->
+  <script src="supabase-config.js"></script>
+  <!-- Admin JS -->
+  <script src="admin.js"></script>
+
+</body>
+</html>
