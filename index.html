@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhawantha Lakshan | Creative Developer & Digital Creator</title>
+  <meta name="description"
+    content="Bhawantha Lakshan – Creative Developer & Digital Creator specializing in Graphic Design, Video Editing, Web Development, and Social Media Marketing." />
+  <meta name="keywords"
+    content="Bhawantha Lakshan, portfolio, graphic design, web development, video editing, digital creator" />
+  <meta property="og:title" content="Bhawantha Lakshan | Creative Developer" />
+  <meta property="og:description"
+    content="Premium portfolio showcasing creative design, web development and digital marketing." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+
+  <!-- Supabase JS SDK (CDN — no build step needed, safe for static hosting) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Supabase config — replace URL + anon key in this file -->
+  <script src="supabase-config.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════ PRELOADER ══════════════ -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">Mr.Bawa</div>
+      <div class="preloader-bar">
+        <div class="preloader-fill"></div>
+      </div>
+      <p class="preloader-text">Loading Experience...</p>
+    </div>
+  </div>
+
+  <!-- ══════════════ CURSOR ══════════════ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-outline"></div>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-text">Mr.Bawa</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul>
+        <li><a href="#about" class="mob-link">About</a></li>
+        <li><a href="#skills" class="mob-link">Skills</a></li>
+        <li><a href="#portfolio" class="mob-link">Portfolio</a></li>
+        <li><a href="#services" class="mob-link">Services</a></li>
+        <li><a href="#contact" class="mob-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HERO SECTION ══════════════ -->
+  <section id="hero">
+    <canvas id="three-canvas"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for Work
+        </div>
+        <h1 class="hero-heading">
+          Hi, I'm<br />
+          <span class="gradient-text" id="typed-name">Bhawantha Lakshan</span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle">Creative Developer &amp; Digital Creator</p>
+        <p class="hero-desc">
+          Crafting immersive digital experiences through design, code, and creativity.
+          Turning ideas into stunning visual realities.
+        </p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn btn-primary" id="btn-work">
+            <span>View My Work</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-outline" id="btn-contact">
+            <span>Contact Me</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" data-target="25">0</span><span>+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="15">0</span><span>+</span>
+            <span class="stat-label">Clients</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="3">0</span><span>+</span>
+            <span class="stat-label">Years Exp.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="profile-3d-card" id="profile-card">
+          <div class="card-glow"></div>
+          <div class="card-inner">
+            <img src="bhawantha.png" alt="Bhawantha Lakshan" class="profile-img" id="profile-img" loading="eager" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-ring ring-1"></div>
+          <div class="card-ring ring-2"></div>
+          <div class="floating-badge badge-top">
+            <i class="fa-solid fa-star"></i> Top Creator
+          </div>
+          <div class="floating-badge badge-bottom">
+            <i class="fa-brands fa-youtube"></i> 100K+ Audience
+          </div>
+        </div>
+
+        <!-- Floating elements around card -->
+        <div class="float-el el-1"><i class="fa-solid fa-palette"></i></div>
+        <div class="float-el el-2"><i class="fa-solid fa-code"></i></div>
+        <div class="float-el el-3"><i class="fa-solid fa-video"></i></div>
+        <div class="float-el el-4"><i class="fa-solid fa-chart-line"></i></div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- ══════════════ ABOUT SECTION ══════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Who I Am</h2>
+        <p class="section-sub">Passionate creator blending technology and artistry</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-left reveal-left">
+          <div class="about-image-wrapper">
+            <img src="bhawantha.png" alt="Bhawantha Lakshan" class="about-img" loading="lazy" />
+            <div class="about-img-glow"></div>
+            <div class="about-exp-badge">
+              <span class="exp-num">3+</span>
+              <span class="exp-text">Years of Creative Excellence</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right reveal-right">
+          <h3 class="about-name">Bhawantha Lakshan</h3>
+          <p class="about-bio">
+            I'm a passionate creative developer and digital content creator currently pursuing my
+            <strong>BSc (Hons) in Software Engineering</strong> at KIU University. With a flair for
+            aesthetics and a love for technology, I craft digital experiences that are not only
+            functional but breathtakingly beautiful.
+          </p>
+          <p class="about-bio">
+            From designing eye-catching posters to building responsive websites and crafting
+            compelling video content — I bring ideas to life with precision and passion.
+          </p>
+
+          <div class="about-edu">
+            <div class="edu-card reveal-up">
+              <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="edu-info">
+                <h4>BSc (Hons) Software Engineering</h4>
+                <p>KIU University – Undergraduate</p>
+              </div>
+            </div>
+            <div class="edu-card reveal-up">
+              <div class="edu-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="edu-info">
+                <h4>Diploma in English</h4>
+                <p>Professional Communication Certificate</p>
+              </div>
+            </div>
+            <div class="edu-card reveal-up">
+              <div class="edu-icon"><i class="fa-solid fa-laptop-code"></i></div>
+              <div class="edu-info">
+                <h4>Diploma in IT</h4>
+                <p>Information Technology Certification</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-tags">
+            <span class="tag">🎨 Designer</span>
+            <span class="tag">💻 Developer</span>
+            <span class="tag">🎬 Video Editor</span>
+            <span class="tag">📱 Content Creator</span>
+            <span class="tag">📊 Marketer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SKILLS SECTION ══════════════ -->
+  <section id="skills">
+    <div class="skills-bg-orb orb-left"></div>
+    <div class="skills-bg-orb orb-right"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">My Expertise</span>
+        <h2 class="section-title">Skills &amp; Abilities</h2>
+        <p class="section-sub">Mastering the tools of the digital world</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal-up" data-delay="0">
+          <div class="skill-icon-wrap">
+            <i class="fa-solid fa-palette skill-icon"></i>
+          </div>
+          <h3 class="skill-name">Graphic Design</h3>
+          <p class="skill-desc">Creating stunning visual identities, posters, and brand assets with Adobe Suite.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="92">
+              <div class="skill-fill"></div>
+            </div>
+            <span class="skill-percent">92%</span>
+          </div>
+          <div class="skill-tools">
+            <span>Photoshop</span><span>Illustrator</span><span>Canva</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-up" data-delay="1">
+          <div class="skill-icon-wrap">
+            <i class="fa-solid fa-film skill-icon"></i>
+          </div>
+          <h3 class="skill-name">Video Editing</h3>
+          <p class="skill-desc">Producing cinematic video content with seamless transitions and visual effects.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="88">
+              <div class="skill-fill"></div>
+            </div>
+            <span class="skill-percent">88%</span>
+          </div>
+          <div class="skill-tools">
+            <span>Premiere Pro</span><span>After Effects</span><span>CapCut</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-up" data-delay="2">
+          <div class="skill-icon-wrap">
+            <i class="fa-solid fa-code skill-icon"></i>
+          </div>
+          <h3 class="skill-name">Web Development</h3>
+          <p class="skill-desc">Building fast, responsive and beautiful websites with modern technologies.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="85">
+              <div class="skill-fill"></div>
+            </div>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="skill-tools">
+            <span>HTML/CSS</span><span>JavaScript</span><span>React</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-up" data-delay="3">
+          <div class="skill-icon-wrap">
+            <i class="fa-solid fa-hashtag skill-icon"></i>
+          </div>
+          <h3 class="skill-name">Social Media Marketing</h3>
+          <p class="skill-desc">Growing brands organically with strategy-driven content and engagement.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="90">
+              <div class="skill-fill"></div>
+            </div>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="skill-tools">
+            <span>Instagram</span><span>TikTok</span><span>YouTube</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal-up" data-delay="4">
+          <div class="skill-icon-wrap">
+            <i class="fa-solid fa-pen-nib skill-icon"></i>
+          </div>
+          <h3 class="skill-name">Content Creation</h3>
+          <p class="skill-desc">Crafting compelling narratives and viral content that resonates with audiences.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="93">
+              <div class="skill-fill"></div>
+            </div>
+            <span class="skill-percent">93%</span>
+          </div>
+          <div class="skill-tools">
+            <span>Copywriting</span><span>Scripting</span><span>Storytelling</span>
+          </div>
+        </div>
+
+        <div class="skill-card skill-card-highlight reveal-up" data-delay="5">
+          <div class="skill-highlight-content">
+            <div class="big-num">100K<span>+</span></div>
+            <p>Total Audience Reached Across All Platforms</p>
+            <div class="platforms">
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-youtube"></i>
+              <i class="fa-brands fa-tiktok"></i>
+              <i class="fa-brands fa-facebook"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PORTFOLIO SECTION ══════════════ -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">My Work</span>
+        <h2 class="section-title">Portfolio</h2>
+        <p class="section-sub">A curated selection of my finest creative work</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="design">Graphic Design</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+      </div>
+
+      <!-- Portfolio items are rendered dynamically by main.js from localStorage -->
+      <div class="portfolio-grid" id="portfolio-grid">
+        <!-- Items injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SERVICES SECTION ══════════════ -->
+  <section id="services">
+    <div class="services-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Offer</span>
+        <h2 class="section-title">My Services</h2>
+        <p class="section-sub">Professional solutions tailored to your needs</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal-up" data-delay="0">
+          <div class="service-num">01</div>
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-image service-icon"></i>
+          </div>
+          <h3 class="service-name">Poster Design</h3>
+          <p class="service-desc">
+            Eye-catching, professional poster designs for events, products, and brands
+            that make a lasting impression.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Custom Brand Identity</li>
+            <li><i class="fa-solid fa-check"></i> Print &amp; Digital Ready</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited Revisions</li>
+          </ul>
+          <a href="#contact" class="service-btn">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="1">
+          <div class="service-num">02</div>
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-video service-icon"></i>
+          </div>
+          <h3 class="service-name">Video Editing</h3>
+          <p class="service-desc">
+            Cinematic video production with professional color grading, transitions,
+            and motion graphics.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Short-form &amp; Long-form</li>
+            <li><i class="fa-solid fa-check"></i> Reels / TikTok / YouTube</li>
+            <li><i class="fa-solid fa-check"></i> Fast Turnaround</li>
+          </ul>
+          <a href="#contact" class="service-btn">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card service-card-featured reveal-up" data-delay="2">
+          <div class="featured-badge">Most Popular</div>
+          <div class="service-num">03</div>
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-bullhorn service-icon"></i>
+          </div>
+          <h3 class="service-name">Advertisement Creation</h3>
+          <p class="service-desc">
+            High-converting digital ads designed to capture attention, drive traffic,
+            and boost your sales.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Social Media Ads</li>
+            <li><i class="fa-solid fa-check"></i> Banner &amp; Display Ads</li>
+            <li><i class="fa-solid fa-check"></i> A/B Tested Creatives</li>
+          </ul>
+          <a href="#contact" class="service-btn">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card reveal-up" data-delay="3">
+          <div class="service-num">04</div>
+          <div class="service-icon-wrap">
+            <i class="fa-solid fa-globe service-icon"></i>
+          </div>
+          <h3 class="service-name">Website Development</h3>
+          <p class="service-desc">
+            Modern, fast, and fully responsive websites that convert visitors into
+            loyal customers.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Custom Design</li>
+            <li><i class="fa-solid fa-check"></i> Mobile-First</li>
+            <li><i class="fa-solid fa-check"></i> SEO Optimized</li>
+          </ul>
+          <a href="#contact" class="service-btn">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SOCIAL PROOF / STATS SECTION ══════════════ -->
+  <section id="social-proof">
+    <div class="proof-bg"></div>
+    <div class="container">
+      <div class="proof-content">
+        <div class="proof-text reveal-left">
+          <span class="section-tag">Social Proof</span>
+          <h2 class="proof-heading">Trusted by a<br /><span class="gradient-text">Massive Audience</span></h2>
+          <p class="proof-desc">
+            Consistently delivering high-quality creative work that resonates with people
+            across multiple platforms and markets.
+          </p>
+          <a href="#contact" class="btn btn-primary">
+            <span>Work With Me</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="proof-stats reveal-right">
+          <div class="proof-stat-card">
+            <div class="proof-stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="proof-stat-num counter" data-target="100">0</div>
+            <div class="proof-stat-unit">K+</div>
+            <div class="proof-stat-label">Total Audience</div>
+          </div>
+          <div class="proof-stat-card">
+            <div class="proof-stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="proof-stat-num counter" data-target="25">0</div>
+            <div class="proof-stat-unit">+</div>
+            <div class="proof-stat-label">Projects Done</div>
+          </div>
+          <div class="proof-stat-card">
+            <div class="proof-stat-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="proof-stat-num counter" data-target="15">0</div>
+            <div class="proof-stat-unit">+</div>
+            <div class="proof-stat-label">Happy Clients</div>
+          </div>
+          <div class="proof-stat-card">
+            <div class="proof-stat-icon"><i class="fa-solid fa-star"></i></div>
+            <div class="proof-stat-num counter" data-target="5">0</div>
+            <div class="proof-stat-unit">.0</div>
+            <div class="proof-stat-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CONTACT SECTION ══════════════ -->
+  <section id="contact">
+    <div class="contact-bg-orb orb-c1"></div>
+    <div class="contact-bg-orb orb-c2"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-sub">Have a project in mind? Let's create something amazing</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h3>Ready to bring your vision to life?</h3>
+          <p>Whether you need a stunning design, a viral video, or a powerful website — I'm here to help you stand out.
+          </p>
+
+          <div class="contact-methods">
+            <a href="https://wa.me/94765863504" target="_blank" class="contact-method whatsapp-btn" id="whatsapp-main">
+              <div class="cm-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div class="cm-text">
+                <span>WhatsApp</span>
+                <small>Chat directly with me</small>
+              </div>
+              <i class="fa-solid fa-arrow-right cm-arrow"></i>
+            </a>
+            <a href="mailto:bhawantha@email.com" class="contact-method">
+              <div class="cm-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="cm-text">
+                <span>Email</span>
+                <small>bawanthalakshan419@gmail.com</small>
+              </div>
+              <i class="fa-solid fa-arrow-right cm-arrow"></i>
+            </a>
+            <div class="contact-method no-link">
+              <div class="cm-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="cm-text">
+                <span>Location</span>
+                <small>Sri Lanka 🇱🇰</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="https://www.instagram.com/bawa_vibez?igsh=a21sY25vb2g0NXZr" class="social-link"
+              aria-label="Instagram" id="social-instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@bawa_vibez?si=jUc7iQmmbdLMk2eQ" class="social-link" aria-label="YouTube"
+              id="social-youtube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="tiktok.com/@bawa_page0" class="social-link" aria-label="TikTok" id="social-tiktok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.facebook.com/bawafb?mibextid=ZbWKwL" class="social-link" aria-label="Facebook"
+              id="social-facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/bhawantha-lakshan-056481372?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              class="social-link" aria-label="LinkedIn" id="social-linkedin">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal-right">
+          <!-- FormSubmit.co — delivers to bawanthalakshan419@gmail.com -->
+          <form
+            id="contact-form"
+            class="contact-form"
+            action="https://formsubmit.co/bawanthalakshan419@gmail.com"
+            method="POST"
+            novalidate
+          >
+            <!-- FormSubmit configuration -->
+            <input type="hidden" name="_subject" value="New Contact from Portfolio — Mr.Bawa" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="thanks.html" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-group">
+              <label for="form-name">Full Name</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="form-name" name="name" placeholder="Your name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="form-email" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-service">Service Needed</label>
+              <div class="input-wrap select-wrap">
+                <i class="fa-solid fa-list input-icon"></i>
+                <select id="form-service" name="service">
+                  <option value="">Select a service</option>
+                  <option value="Poster Design">Poster Design</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Advertisement Creation">Advertisement Creation</option>
+                  <option value="Website Development">Website Development</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-message input-icon textarea-icon"></i>
+                <textarea id="form-message" name="message" rows="5" placeholder="Tell me about your project..."
+                  required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit" id="form-submit-btn">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <div class="form-success" id="form-success">
+              <i class="fa-solid fa-circle-check"></i>
+              Message sent! I'll get back to you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">BL</div>
+      <p class="footer-tagline">Crafting Digital Experiences with Passion &amp; Precision</p>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/bawa_vibez?igsh=a21sY25vb2g0NXZr" aria-label="Instagram"><i
+            class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com/@bawa_vibez?si=jUc7iQmmbdLMk2eQ" aria-label="YouTube"><i
+            class="fa-brands fa-youtube"></i></a>
+        <a href="tiktok.com/@bawa_page0" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/bawafb?mibextid=ZbWKwL" aria-label="Facebook"><i
+            class="fa-brands fa-facebook"></i></a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bhawantha Lakshan. All Rights Reserved. Crafted with <i class="fa-solid fa-heart"
+            style="color:#3b82f6;"></i>
+          &nbsp;·&nbsp;
+          <a href="admin.html" style="color:rgba(255,255,255,0.15); font-size:0.72rem; text-decoration:none;" title="Admin">⚙</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════ FLOATING WhatsApp BUTTON ══════════════ -->
+  <a href="https://wa.me/94765863504" target="_blank" class="whatsapp-float" id="whatsapp-float"
+    aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-tooltip">Chat with me!</span>
+  </a>
+
+  <!-- ══════════════ BACK TO TOP ══════════════ -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- Main JS -->
+  <script src="main.js"></script>
+</body>
+
+</html>
